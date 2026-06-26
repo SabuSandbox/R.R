@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise Awaits...</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFC2D1 0%, #FFE5EC 50%, #E8AEFF 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .fancy-title {
+            font-family: 'Dancing Script', cursive;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(255, 112, 150, 0.2);
+        }
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+        /* Custom Scrollbar for the contract list */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #FFB3C6; border-radius: 10px; }
+        
+        .promise-item {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #4B5563;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- MAIN GATEWAY CARD -->
+    <div class="glass-panel rounded-3xl p-10 md:p-14 text-center max-w-lg w-full flex flex-col items-center shadow-2xl transition-all duration-500 relative z-10">
+        
+        <!-- Animated Icon -->
+        <div class="w-16 h-16 bg-white/50 rounded-full flex items-center justify-center mb-6 shadow-inner animate-bounce duration-1000">
+            <i class="fa-solid fa-envelope-open-heart text-3xl text-[#FF7096]"></i>
+        </div>
+
+        <h1 class="fancy-title text-4xl md:text-5xl text-[#FF7096] mb-4 drop-shadow-sm">Hello, Beautiful</h1>
+        
+        <!-- Updated Hinglish Teaser Message -->
+        <p class="text-lg text-gray-700 font-medium mb-4 leading-relaxed">
+            Sorryyy, itna wait krane ke liye. Lekin it will be worth it. ✨
+        </p>
+        <p class="text-[15px] text-gray-600 mb-8 leading-relaxed">
+            A surprise is waiting for you, but before you see it, you have to agree to a small contract. 📜
+        </p>
+
+        <!-- Button to open the Modal -->
+        <button onclick="openContract()" class="group relative px-8 py-4 bg-gradient-to-r from-[#FF7096] to-[#D4A5FF] text-white font-bold tracking-wider uppercase rounded-full shadow-[0_0_20px_rgba(255,112,150,0.5)] hover:shadow-[0_0_30px_rgba(255,112,150,0.7)] transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer">
+            <span class="flex items-center gap-2">
+                Open Small Contract <i class="fa-solid fa-file-signature group-hover:rotate-12 transition-transform"></i>
+            </span>
+        </button>
+
+    </div>
+
+    <!-- THE CONTRACT MODAL (Hidden by default) -->
+    <div id="contract-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/20 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
+        
+        <div class="glass-modal w-full max-w-md h-[80vh] flex flex-col rounded-3xl p-6 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="text-center mb-4 pb-4 border-b border-white/50">
+                <h2 class="fancy-title text-3xl text-[#FF7096]">Our Lifetime Contract</h2>
+                <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">100 Promises to You</p>
+            </div>
+
+            <!-- Scrollable Promises List -->
+            <!-- Add all your 100 promises here following the same format! -->
+            <ul class="flex-1 overflow-y-auto pr-2 pb-4 space-y-2 text-left">
+                
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>1. I promise to always love you, even when you are hangry.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>2. I promise to listen to your office gossip with full attention.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>3. I promise to never watch the next episode of our show without you.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>4. I promise to always share the last slice of pizza with you.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>5. I promise to hold your hand during the scary parts of a movie.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>6. I promise to randomly surprise you just to see your smile.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>7. I promise to tell you "you look beautiful" every single day.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>8. I promise to be your personal photographer until we get the perfect picture.</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>9. I promise to apologize first (most of the time).</span>
+                </li>
+                <li class="promise-item">
+                    <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                    <span>10. I promise to be your best friend for the rest of my life.</span>
+                </li>
+                
+                <!-- Keep copying the <li> block above to reach 100! -->
+
+            </ul>
+
+            <!-- Modal Footer with the Final Link -->
+            <div class="mt-4 pt-4 border-t border-white/50 flex flex-col gap-3">
+                <button onclick="closeContract()" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+                    Wait, let me read it again
+                </button>
+                
+                <!-- IMPORTANT: Change the href link below to point to your new Bibi website! -->
+                <a href="NEW_WEBSITE_LINK_HERE.html" class="w-full text-center px-6 py-3 bg-gradient-to-r from-[#FF7096] to-[#FF85A2] text-white font-bold text-sm tracking-wider uppercase rounded-xl shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer">
+                    I Agree & Unlock Surprise 💖
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript to handle Modal animations -->
+    <script>
+        const modal = document.getElementById('contract-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openContract() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Slight delay for smooth fade-in
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeContract() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
